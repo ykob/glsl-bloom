@@ -1,0 +1,26 @@
+- var website_domain = "https://ykob.github.io/demofiles"
+- var meta_path_merge = meta_path;
+- var meta_ogp_description = meta_description
+
+meta(charset="utf-8")
+meta(http-equiv="X-UA-Compatible", content="IE=edge")
+title #{meta_title}
+meta(name="viewport", content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1")
+meta(name="description", content = meta_description)
+meta(name="keywords", content = meta_keywords)
+meta(name="theme-color", content="#ffffff")
+link(rel="shortcut icon" href="./img/icon.ico")
+link(rel="apple-touch-icon" href="./img/apple-touch-icon.png")
+link(rel="stylesheet" href="./css/main.css")
+
+meta(property="og:title", content = meta_title)
+meta(property="og:site_name", content = meta_title)
+meta(property="og:type", content="website")
+meta(property="og:description", content = meta_ogp_description)
+meta(property="og:url", content = website_domain + meta_path)
+meta(property="og:image", content = website_domain + '/img/' + meta_ogp_img)
+
+meta(name="twitter:card", content="summary_large_image")
+meta(name="twitter:title", content = meta_title)
+meta(name="twitter:description", content = meta_ogp_description)
+meta(name="twitter:image", content = website_domain + '/img/' + meta_ogp_img)
