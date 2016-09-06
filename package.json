@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "glsl-easings": "^1.0.0",
+    "glsl-fast-gaussian-blur": "^1.0.2",
     "glsl-inverse": "^1.0.0",
     "glsl-noise": "0.0.0",
     "glslify": "^5.1.0"
