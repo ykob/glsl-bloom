@@ -1,9 +1,10 @@
 const glslify = require('glslify');
 
-export default class PlaneFb {
-  constructor(texture) {
+export default class PlaneBlur {
+  constructor(texture, direction) {
     this.uniforms = null;
     this.texture = texture;
+    this.direction = direction;
     this.mesh = this.createMesh();
   }
   createMesh() {
@@ -11,6 +12,10 @@ export default class PlaneFb {
       resolution: {
         type: 'v2',
         value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+      },
+      direction: {
+        type: 'v2',
+        value: this.direction,
       },
       texture: {
         type: 't',
@@ -21,13 +26,10 @@ export default class PlaneFb {
       new THREE.PlaneBufferGeometry(2, 2),
       new THREE.ShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: glslify('../../glsl/plane_fb.vs'),
-        fragmentShader: glslify('../../glsl/plane_fb.fs'),
+        vertexShader: glslify('../../glsl/gaussian_blur.vs'),
+        fragmentShader: glslify('../../glsl/gaussian_blur.fs'),
       })
     );
-  }
-  render(time) {
-    this.uniforms.time.value += time * this.time;
   }
   resize() {
     this.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
