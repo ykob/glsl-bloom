@@ -11,7 +11,7 @@ export default class PlaneBlur {
     this.uniforms = {
       resolution: {
         type: 'v2',
-        value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+        value: new THREE.Vector2(window.innerWidth / 8, window.innerHeight / 8),
       },
       direction: {
         type: 'v2',
@@ -20,7 +20,7 @@ export default class PlaneBlur {
       texture: {
         type: 't',
         value: this.texture
-      }
+      },
     };
     return new THREE.Mesh(
       new THREE.PlaneBufferGeometry(2, 2),
@@ -32,6 +32,6 @@ export default class PlaneBlur {
     );
   }
   resize() {
-    this.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
+    this.uniforms.resolution.value.set(window.innerWidth / 8, window.innerHeight / 8);
   }
 }

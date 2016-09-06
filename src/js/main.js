@@ -10,12 +10,16 @@ const renderer = new THREE.WebGLRenderer({
 });
 const render_base = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
 const render_bright = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
-const render_blurh = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
-const render_blurv = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
+const render_blurh = new THREE.WebGLRenderTarget(window.innerWidth / 8, window.innerHeight / 8);
+const render_blurv = new THREE.WebGLRenderTarget(window.innerWidth / 8, window.innerHeight / 8);
+const render_blurh2 = new THREE.WebGLRenderTarget(window.innerWidth / 8, window.innerHeight / 8);
+const render_blurv2 = new THREE.WebGLRenderTarget(window.innerWidth / 8, window.innerHeight / 8);
 const scene_base = new THREE.Scene();
 const scene_bright = new THREE.Scene();
 const scene_blurh = new THREE.Scene();
 const scene_blurv = new THREE.Scene();
+const scene_blurh2 = new THREE.Scene();
+const scene_blurv2 = new THREE.Scene();
 const scene_bloom = new THREE.Scene();
 const camera_base = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 const camera_bloom = new THREE.PerspectiveCamera(45, 1, 1, 10000);
@@ -25,7 +29,9 @@ const sphere = new Sphere();
 const plane_bright = new PlaneBright(render_base.texture);
 const plane_blurh = new PlaneBlur(render_bright.texture, new THREE.Vector2(1.0, 0.0));
 const plane_blurv = new PlaneBlur(render_blurh.texture, new THREE.Vector2(0.0, 1.0));
-const plane_bloom = new PlaneBloom(render_base.texture, render_blurv.texture);
+const plane_blurh2 = new PlaneBlur(render_blurv.texture, new THREE.Vector2(1.0, 0.0));
+const plane_blurv2 = new PlaneBlur(render_blurh2.texture, new THREE.Vector2(0.0, 1.0));
+const plane_bloom = new PlaneBloom(render_base.texture, render_blurv2.texture);
 
 const resizeWindow = () => {
   canvas.width = window.innerWidth;
@@ -59,6 +65,8 @@ const render = () => {
   renderer.render(scene_bright, camera_bloom, render_bright);
   renderer.render(scene_blurh, camera_bloom, render_blurh);
   renderer.render(scene_blurv, camera_bloom, render_blurv);
+  renderer.render(scene_blurh2, camera_bloom, render_blurh2);
+  renderer.render(scene_blurv2, camera_bloom, render_blurv2);
   renderer.render(scene_bloom, camera_bloom);
 }
 const renderLoop = () => {
@@ -67,7 +75,7 @@ const renderLoop = () => {
 }
 const init = () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x333333, 1.0);
+  renderer.setClearColor(0x222222, 1.0);
   camera_base.position.set(1000, 1000, 1000);
   camera_base.lookAt(new THREE.Vector3());
 
@@ -75,6 +83,8 @@ const init = () => {
   scene_bright.add(plane_bright.mesh);
   scene_blurh.add(plane_blurh.mesh);
   scene_blurv.add(plane_blurv.mesh);
+  scene_blurh2.add(plane_blurh2.mesh);
+  scene_blurv2.add(plane_blurv2.mesh);
   scene_bloom.add(plane_bloom.mesh);
 
   setEvent();
