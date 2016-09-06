@@ -3,6 +3,7 @@ const glslify = require('glslify');
 export default class PlaneBloom {
   constructor(tex_base, tex_blur) {
     this.uniforms = null;
+    this.tone = 0.5;
     this.tex_base = tex_base;
     this.tex_blur = tex_blur;
     this.mesh = this.createMesh();
@@ -11,7 +12,7 @@ export default class PlaneBloom {
     this.uniforms = {
       tone: {
         type: 'f',
-        value: 0.8,
+        value: this.tone,
       },
       tex_base: {
         type: 't',

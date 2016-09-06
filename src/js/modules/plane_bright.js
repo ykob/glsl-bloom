@@ -3,6 +3,7 @@ const glslify = require('glslify');
 export default class PlaneBright {
   constructor(texture) {
     this.uniforms = null;
+    this.minBright = 0.2;
     this.texture = texture;
     this.mesh = this.createMesh();
   }
@@ -10,7 +11,7 @@ export default class PlaneBright {
     this.uniforms = {
       minBright: {
         type: 'f',
-        value: 0.4,
+        value: this.minBright,
       },
       texture: {
         type: 't',
