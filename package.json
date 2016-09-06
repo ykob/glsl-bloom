@@ -1,9 +1,9 @@
 {
-  "name": "demofiles",
-  "description": "it is my basic files for three.js demo.",
+  "name": "glsl-bloom",
+  "description": "test of a glsl bloom effect.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ykob/demofiles"
+    "url": "https://github.com/ykob/glsl-bloom"
   },
   "private": true,
   "scripts": {
