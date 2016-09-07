@@ -32,8 +32,8 @@ export default class PlaneBloom {
       new THREE.PlaneBufferGeometry(2, 2),
       new THREE.ShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: glslify('../../../glsl/bloom.vs'),
-        fragmentShader: glslify('../../../glsl/bloom.fs'),
+        vertexShader: glslify('../../../glsl/bloom/bloom.vs'),
+        fragmentShader: glslify('../../../glsl/bloom/bloom.fs'),
       })
     );
   }

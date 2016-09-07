@@ -22,8 +22,8 @@ export default class PlaneBright {
       new THREE.PlaneBufferGeometry(2, 2),
       new THREE.ShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: glslify('../../../glsl/bright.vs'),
-        fragmentShader: glslify('../../../glsl/bright.fs'),
+        vertexShader: glslify('../../../glsl/bloom/bright.vs'),
+        fragmentShader: glslify('../../../glsl/bloom/bright.fs'),
       })
     );
   }
