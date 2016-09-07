@@ -11,7 +11,7 @@ export default class PlaneBlur {
     this.uniforms = {
       resolution: {
         type: 'v2',
-        value: new THREE.Vector2(window.innerWidth / 8, window.innerHeight / 8),
+        value: new THREE.Vector2(window.innerWidth / 10, window.innerHeight / 10),
       },
       direction: {
         type: 'v2',
@@ -32,6 +32,6 @@ export default class PlaneBlur {
     );
   }
   resize() {
-    this.uniforms.resolution.value.set(window.innerWidth / 8, window.innerHeight / 8);
+    this.uniforms.resolution.value.set(window.innerWidth / 10, window.innerHeight / 10);
   }
 }

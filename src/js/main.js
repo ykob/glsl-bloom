@@ -9,8 +9,8 @@ const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
 const render_base = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
-const render_bloom1 = new THREE.WebGLRenderTarget(window.innerWidth / 8, window.innerHeight / 8);
-const render_bloom2 = new THREE.WebGLRenderTarget(window.innerWidth / 8, window.innerHeight / 8);
+const render_bloom1 = new THREE.WebGLRenderTarget(window.innerWidth / 10, window.innerHeight / 10);
+const render_bloom2 = new THREE.WebGLRenderTarget(window.innerWidth / 10, window.innerHeight / 10);
 const scene_base = new THREE.Scene();
 const scene_bright = new THREE.Scene();
 const scene_blurh = new THREE.Scene();
@@ -44,6 +44,7 @@ const initDatGui = () => {
   const controller = {
     minBright: gui.add(plane_bright, 'minBright', 0, 1).name('minBright'),
     tone: gui.add(plane_bloom, 'tone', 0, 1).name('original tone'),
+    strength: gui.add(plane_bloom, 'strength', 0, 2).name('bright strength'),
   }
   controller.minBright.onChange((value) => {
     plane_bright.uniforms.minBright.value = value;
@@ -51,15 +52,18 @@ const initDatGui = () => {
   controller.tone.onChange((value) => {
     plane_bloom.uniforms.tone.value = value;
   });
+  controller.strength.onChange((value) => {
+    plane_bloom.uniforms.strength.value = value;
+  });
 }
 const render = () => {
   sphere.render(clock.getDelta());
   renderer.render(scene_base, camera_base, render_base);
   renderer.render(scene_bright, camera_bloom, render_bloom1);
-  renderer.render(scene_blurh, camera_bloom, render_bloom2);
-  renderer.render(scene_blurv, camera_bloom, render_bloom1);
-  renderer.render(scene_blurh, camera_bloom, render_bloom2);
-  renderer.render(scene_blurv, camera_bloom, render_bloom1);
+  for (var i = 0; i < 3; i++) {
+    renderer.render(scene_blurh, camera_bloom, render_bloom2);
+    renderer.render(scene_blurv, camera_bloom, render_bloom1);
+  }
   renderer.render(scene_bloom, camera_bloom);
 }
 const renderLoop = () => {
