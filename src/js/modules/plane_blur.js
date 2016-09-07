@@ -19,7 +19,7 @@ export default class PlaneBlur {
       },
       texture: {
         type: 't',
-        value: this.texture
+        value: this.texture,
       },
     };
     return new THREE.Mesh(

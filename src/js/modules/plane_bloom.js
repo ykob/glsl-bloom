@@ -16,11 +16,11 @@ export default class PlaneBloom {
       },
       tex_base: {
         type: 't',
-        value: this.tex_base
+        value: this.tex_base,
       },
       tex_blur: {
         type: 't',
-        value: this.tex_blur
+        value: this.tex_blur,
       }
     };
     return new THREE.Mesh(
