@@ -10,6 +10,7 @@ const render_base = new THREE.WebGLRenderTarget(window.innerWidth, window.innerH
 const scene_base = new THREE.Scene();
 const camera_base = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 const clock = new THREE.Clock();
+const stats = new Stats();
 const bloom = new Bloom(render_base.texture);
 const sphere = new Sphere();
 
@@ -46,13 +47,19 @@ const initDatGui = () => {
     bloom.plane.bloom.uniforms.tone.value = value;
   });
 }
+const initStats = () => {
+  stats.showPanel(0);
+  document.body.appendChild(stats.dom);
+}
 const render = () => {
   sphere.render(clock.getDelta());
   renderer.render(scene_base, camera_base, render_base);
   bloom.render(renderer);
 }
 const renderLoop = () => {
+  stats.begin();
   render();
+  stats.end();
   requestAnimationFrame(renderLoop);
 }
 const init = () => {
@@ -65,6 +72,7 @@ const init = () => {
 
   setEvent();
   initDatGui();
+  initStats();
   resizeWindow();
   renderLoop();
 }
