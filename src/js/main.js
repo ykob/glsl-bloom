@@ -32,6 +32,11 @@ const resizeWindow = () => {
   camera_base.aspect = window.innerWidth / window.innerHeight;
   camera_base.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  render_base.setSize(window.innerWidth, window.innerHeight);
+  render_bloom1.setSize(window.innerWidth / 10, window.innerHeight / 10);
+  render_bloom2.setSize(window.innerWidth / 10, window.innerHeight / 10);
+  plane_blurh.resize();
+  plane_blurv.resize();
   sphere.resize();
 }
 const setEvent = () => {

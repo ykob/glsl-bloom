@@ -37,7 +37,4 @@ export default class PlaneBloom {
       })
     );
   }
-  render(time) {
-    this.uniforms.time.value += time * this.time;
-  }
 }
