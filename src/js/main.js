@@ -11,6 +11,7 @@ const scene_base = new THREE.Scene();
 const camera_base = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 const clock = new THREE.Clock();
 const stats = new Stats();
+
 const bloom = new Bloom(render_base.texture);
 const sphere = new Sphere();
 
