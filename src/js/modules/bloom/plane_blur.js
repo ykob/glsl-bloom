@@ -26,8 +26,8 @@ export default class PlaneBlur {
       new THREE.PlaneBufferGeometry(2, 2),
       new THREE.ShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: glslify('../../glsl/gaussian_blur.vs'),
-        fragmentShader: glslify('../../glsl/gaussian_blur.fs'),
+        vertexShader: glslify('../../../glsl/gaussian_blur.vs'),
+        fragmentShader: glslify('../../../glsl/gaussian_blur.fs'),
       })
     );
   }

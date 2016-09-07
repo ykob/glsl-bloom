@@ -5,8 +5,8 @@ export default class PlaneBloom {
     this.uniforms = null;
     this.tone = 0.7;
     this.strength = 1;
-    this.tex_base = tex_base;
-    this.tex_blur = tex_blur;
+    this.texBase = tex_base;
+    this.texBlur = tex_blur;
     this.mesh = this.createMesh();
   }
   createMesh() {
@@ -19,21 +19,21 @@ export default class PlaneBloom {
         type: 'f',
         value: this.strength,
       },
-      tex_base: {
+      texBase: {
         type: 't',
-        value: this.tex_base,
+        value: this.texBase,
       },
-      tex_blur: {
+      texBlur: {
         type: 't',
-        value: this.tex_blur,
+        value: this.texBlur,
       }
     };
     return new THREE.Mesh(
       new THREE.PlaneBufferGeometry(2, 2),
       new THREE.ShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: glslify('../../glsl/bloom.vs'),
-        fragmentShader: glslify('../../glsl/bloom.fs'),
+        vertexShader: glslify('../../../glsl/bloom.vs'),
+        fragmentShader: glslify('../../../glsl/bloom.fs'),
       })
     );
   }
