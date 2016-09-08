@@ -6,6 +6,7 @@ body {
   overflow: hidden;
   color: $color-text;
   font-family: "Noto Sans";
+  background: radial-gradient(ellipse at center, rgba(5,2,0,1) 60%, rgba(50,40,10,1) 100%);
 }
 a {
   color: $color-text;

@@ -5,6 +5,7 @@ const canvas = document.getElementById('canvas-webgl');
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
   canvas: canvas,
+  alpha: true
 });
 const render_base = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
 const scene_base = new THREE.Scene();
@@ -65,7 +66,7 @@ const renderLoop = () => {
 }
 const init = () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x222222, 1.0);
+  renderer.setClearColor(0x222222, 0.0);
   camera_base.position.set(0, 200, 1000);
   camera_base.lookAt(new THREE.Vector3());
 
