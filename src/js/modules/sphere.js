@@ -2,7 +2,7 @@ const glslify = require('glslify');
 
 export default class Sphere {
   constructor() {
-    this.time = 2;
+    this.time = 3;
     this.radius = 200;
     this.uniforms = null;
     this.mesh = this.createMesh();
@@ -23,7 +23,7 @@ export default class Sphere {
       },
     };
     return new THREE.Mesh(
-      new THREE.OctahedronGeometry(300, 5),
+      new THREE.OctahedronGeometry(240, 7),
       new THREE.ShaderMaterial({
         uniforms: this.uniforms,
         vertexShader: glslify('../../glsl/sphere.vs'),
