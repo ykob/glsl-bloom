@@ -2,6 +2,7 @@ const glslify = require('glslify');
 
 export default class Sphere {
   constructor() {
+    this.time = 2;
     this.radius = 200;
     this.uniforms = null;
     this.mesh = this.createMesh();
@@ -22,11 +23,14 @@ export default class Sphere {
       },
     };
     return new THREE.Mesh(
-      new THREE.BoxGeometry(2, 2, 2),
+      new THREE.OctahedronGeometry(300, 5),
       new THREE.ShaderMaterial({
         uniforms: this.uniforms,
         vertexShader: glslify('../../glsl/sphere.vs'),
         fragmentShader: glslify('../../glsl/sphere.fs'),
+        transparent: true,
+        side: THREE.DoubleSide,
+        shading: THREE.FlatShading,
       })
     );
   }
