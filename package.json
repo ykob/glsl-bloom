@@ -1,6 +1,6 @@
 {
   "name": "glsl-bloom",
-  "description": "test of the glsl bloom effect.",
+  "description": "test of a glsl bloom effect. it is not used THREE.EffectComposer.",
   "repository": {
     "type": "git",
     "url": "https://github.com/ykob/glsl-bloom"
