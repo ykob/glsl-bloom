@@ -6,8 +6,8 @@ export default class Bloom {
   constructor(tex_base) {
     this.blurCount = 3;
     this.renderTarget = [
-      new THREE.WebGLRenderTarget(window.innerWidth / 10, window.innerHeight / 10),
-      new THREE.WebGLRenderTarget(window.innerWidth / 10, window.innerHeight / 10),
+      new THREE.WebGLRenderTarget(window.innerWidth / 4, window.innerHeight / 4),
+      new THREE.WebGLRenderTarget(window.innerWidth / 4, window.innerHeight / 4),
     ];
     this.scene = {
       bright: new THREE.Scene(),
@@ -39,8 +39,8 @@ export default class Bloom {
     renderer.render(this.scene.bloom, this.camera);
   }
   resize() {
-    this.renderTarget[0].setSize(window.innerWidth / 10, window.innerHeight / 10);
-    this.renderTarget[1].setSize(window.innerWidth / 10, window.innerHeight / 10);
+    this.renderTarget[0].setSize(window.innerWidth / 4, window.innerHeight / 4);
+    this.renderTarget[1].setSize(window.innerWidth / 4, window.innerHeight / 4);
     this.plane.blurh.resize();
     this.plane.blurv.resize();
   }
