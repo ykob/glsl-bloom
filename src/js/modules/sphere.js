@@ -3,7 +3,7 @@ const glslify = require('glslify');
 export default class Sphere {
   constructor() {
     this.time = 3;
-    this.radius = 200;
+    this.hue = 0.1;
     this.uniforms = null;
     this.mesh = this.createMesh();
   }
@@ -13,13 +13,9 @@ export default class Sphere {
         type: 'f',
         value: 0,
       },
-      resolution: {
-        type: 'v2',
-        value: new THREE.Vector2(window.innerWidth, window.innerHeight),
-      },
-      radius: {
+      hue: {
         type: 'f',
-        value: this.radius,
+        value: this.hue,
       },
     };
     return new THREE.Mesh(
@@ -36,8 +32,5 @@ export default class Sphere {
   }
   render(time) {
     this.uniforms.time.value += time * this.time;
-  }
-  resize() {
-    this.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
   }
 }

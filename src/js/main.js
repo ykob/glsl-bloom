@@ -24,7 +24,6 @@ const resizeWindow = () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   render_base.setSize(window.innerWidth, window.innerHeight);
   bloom.resize();
-  sphere.resize();
 }
 const setEvent = () => {
   $(window).on('resize', () => {
@@ -38,6 +37,7 @@ const initDatGui = () => {
     minBright: gui.add(bloom.plane.bright, 'minBright', 0, 1).name('min bright'),
     strength: gui.add(bloom.plane.bloom, 'strength', 0, 3).name('bright strength'),
     tone: gui.add(bloom.plane.bloom, 'tone', 0, 1).name('original tone'),
+    colorHue: gui.add(sphere, 'hue', 0, 1).name('color hue'),
   }
   controller.minBright.onChange((value) => {
     bloom.plane.bright.uniforms.minBright.value = value;
@@ -47,6 +47,9 @@ const initDatGui = () => {
   });
   controller.tone.onChange((value) => {
     bloom.plane.bloom.uniforms.tone.value = value;
+  });
+  controller.colorHue.onChange((value) => {
+    sphere.uniforms.hue.value = value;
   });
 }
 const initStats = () => {

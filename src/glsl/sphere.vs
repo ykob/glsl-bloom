@@ -1,4 +1,5 @@
 uniform float time;
+uniform float hue;
 
 varying vec4 vColor;
 varying vec4 vPosition;
@@ -17,8 +18,7 @@ void main(void) {
       )
     ));
   vec4 noise_position = vec4(position + (normalize(position) * 6.0 * noise), 1.0);
-  // vColor = vec4(0.85 - (1.0 - noise) * 0.8, 0.55 - (1.0 - noise) * 0.45, 0.35 - (1.0 - noise) * 0.25, 1.0);
-  vColor = vec4(hsv2rgb(vec3(0.1 + ((1.0 - noise) * 0.6), 0.2 + (noise * 0.4), 0.1 + (noise * 0.6))), 1.0);
+  vColor = vec4(hsv2rgb(vec3(hue + ((1.0 - noise) * 0.6), 0.65, 0.05 + (noise * 0.7))), 1.0);
   vPosition = noise_position;
   vInvertMatrix = inverse(modelMatrix);
   gl_Position = projectionMatrix * modelViewMatrix * noise_position;
