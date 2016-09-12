@@ -32,12 +32,14 @@ const setEvent = () => {
 }
 const initDatGui = () => {
   const gui = new dat.GUI();
+  const group_bright = gui.addFolder('bright');
+  const group_sphere = gui.addFolder('sphere');
   const controller = {
-    blurCount: gui.add(bloom, 'blurCount', 1, 10).name('blur count').step(1),
-    minBright: gui.add(bloom.plane.bright, 'minBright', 0, 1).name('min bright'),
-    strength: gui.add(bloom.plane.bloom, 'strength', 0, 3).name('bright strength'),
-    tone: gui.add(bloom.plane.bloom, 'tone', 0, 1).name('original tone'),
-    colorHue: gui.add(sphere, 'hue', 0, 1).name('color hue'),
+    blurCount: group_bright.add(bloom, 'blurCount', 1, 10).name('blur count').step(1),
+    minBright: group_bright.add(bloom.plane.bright, 'minBright', 0, 1).name('min bright'),
+    strength: group_bright.add(bloom.plane.bloom, 'strength', 0, 3).name('bright strength'),
+    tone: group_bright.add(bloom.plane.bloom, 'tone', 0, 1).name('original tone'),
+    colorHue: group_sphere.add(sphere, 'hue', 0, 1).name('color hue'),
   }
   controller.minBright.onChange((value) => {
     bloom.plane.bright.uniforms.minBright.value = value;
@@ -51,6 +53,8 @@ const initDatGui = () => {
   controller.colorHue.onChange((value) => {
     sphere.uniforms.hue.value = value;
   });
+  group_bright.open();
+  group_sphere.open();
 }
 const initStats = () => {
   stats.showPanel(0);
@@ -82,3 +86,7 @@ const init = () => {
   renderLoop();
 }
 init();
+
+setInterval(function() {
+
+}, 1);
