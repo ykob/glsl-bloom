@@ -4,7 +4,7 @@ export default class PlaneBloom {
   constructor(tex_base, tex_blur) {
     this.uniforms = null;
     this.tone = 0.7;
-    this.strength = 1.5;
+    this.strength = 3;
     this.texBase = tex_base;
     this.texBlur = tex_blur;
     this.mesh = this.createMesh();

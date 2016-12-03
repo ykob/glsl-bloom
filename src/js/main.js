@@ -37,7 +37,7 @@ const initDatGui = () => {
   const controller = {
     blurCount: group_bright.add(bloom, 'blurCount', 1, 10).name('blur count').step(1),
     minBright: group_bright.add(bloom.plane.bright, 'minBright', 0, 1).name('min bright'),
-    strength: group_bright.add(bloom.plane.bloom, 'strength', 0, 3).name('bright strength'),
+    strength: group_bright.add(bloom.plane.bloom, 'strength', 0, 5).name('bright strength'),
     tone: group_bright.add(bloom.plane.bloom, 'tone', 0, 1).name('original tone'),
     colorHue: group_sphere.add(sphere, 'hue', 0, 1).name('color hue'),
   }
